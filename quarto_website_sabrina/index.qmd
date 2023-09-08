@@ -1,0 +1,145 @@
+---
+title: "Fuzzing Book Chapter 1 Reading"
+subtitle: "Author: Sabrina Rodriguez"
+---
+
+# About the Author
+
+
+![Picture of me above](panda.jpeg)
+
+
+Hello, my name is Sabrina Rodriguez, and I am looking forward to collaborating with everyone throughout the semester.
+
+
+# Week 1
+
+## SE1
+
+#### Summary
+
+This chapter discusses the significance of software engineering and provides an overview of how organization serves as a foundational principle in this field. The book's authors highlight the evolution of programming development over time and emphasize essential considerations for effective programming.
+
+#### Reflection
+
+I believe that the book has key insights on how to create efficient code that allows for improvement over time. Specifically in reducing redundant code, improving organization, and bettering time-cost trade-offs. 
+
+#### Use-Case
+
+This book will enable us to efficiently execute code that Chasten can review and use as a test-case environment.
+
+## FB1
+
+#### Summary
+
+The first chapter of Fuzzingbook discusses some attributes of python such as creating test cases and debugging specific code. Test cases are an upmost importance when writing and distributing code to other users. Test cases ensure that the program is working for all scenarios, which is why the chapter goes into depth of different ways to test a program. It also discusses the benefits of debugging code within the very coding process, in order to avoid bugs for larger programs. There are the benefits writing test cases, but the chapter also describes the obstacles and difficulty when doing so, such as untested inputs where a function is still likely to fail. The authors describe different behaviors of different functions and how few programs can accurately give a correct output in most case scenarios. Despite these faults, test cases are extremely important to have in a program as they allow for effective results and aim for an error free code. 
+
+
+#### Reflection
+
+The chapter was an amazing refresher on how to utilize specific python commands and methods to write efficient code. Specifically referring to test cases, I struggly writing test cases in general and have a difficult time understanding how to fully utilize its use, with this chapter in mind, I can definitely refer to it for future purposes. Implementing code in Chasten knowing how to effectively and efficiently write test cases can help tremendously within the process of making the program. 
+
+#### Use-Case
+
+For example, one way to test a python program is by manually making a test case to automate test:
+```python
+    result = my_sqrt(4)
+expected_result = 2.0
+if result == expected_result:
+    print("Test passed")
+else:
+    print("Test failed")
+```
+producing the output:
+
+```python
+Test passed
+```
+However, this is not an efficient way to write test cases, as it only allows for one correct answer and not a rounded answer or an integer as a result, it also takes up many lines of code. A more effective way to write a test case is by making it more compact using an `assertion` statement, which is used to take a condition and evaluate whether it is true or not (similar to a Yield statement):
+
+```python
+assert my_sqrt(4) == 2
+```
+
+Another example of producing an effective test case is through Run-Time Verification, which is a method of analyzing extracting data from a system and identifies behaviors that meet or breach a specific criteria. An example the book provides of a Run-Time Verification is seen below: 
+
+```python
+def my_sqrt_checked(x):
+    root = my_sqrt(x)
+    assertEquals(root * root, x)
+    return root
+
+my_sqrt_checked(2.0)
+```
+
+producing the result:
+
+```python
+1.414213562373095
+```
+
+The chapter also touched on the importance of debugging programs in a specific manner to ensure errors will not occur frequently throughout the programmers journey of writing their code. There are two different methods the chapter touched on which involve writing a print statement after every line to ensure there is a correct output:
+
+```python
+def my_sqrt_with_log(x):
+    """Computes the square root of x, using the Newton–Raphson method"""
+    approx = None
+    print(approx)
+    guess = x / 2
+    while approx != guess:
+        print("approx =", approx)  # <-- New
+        approx = guess
+        guess = (approx + x / approx) / 2
+    return approx
+
+my_sqrt_with_log(9)
+```
+producing the output:
+
+```python
+None
+approx = None
+approx = 4.5
+approx = 3.25
+approx = 3.0096153846153846
+approx = 3.000015360039322
+approx = 3.0000000000393214
+Out[30]:
+3.0
+```
+
+The other method is using a `%%debug` method to debug your code:
+
+```python
+%%debug
+def my_sqrt_with_log(x):
+    """Computes the square root of x, using the Newton–Raphson method"""
+    approx = None
+    print(approx)
+    guess = x / 2
+    while approx != guess:
+        print("approx =", approx)  # <-- New
+        approx = guess
+        guess = (approx + x / approx) / 2
+    return approx
+```
+```python
+NOTE: Enter 'c' at the ipdb>  prompt to continue execution.
+> <string>(2)<module>()
+
+ipdb> c
+```
+```python
+my_sqrt_with_log(9)
+
+None
+approx = None
+approx = 4.5
+approx = 3.25
+approx = 3.0096153846153846
+approx = 3.000015360039322
+approx = 3.0000000000393214
+Out[34]:
+3.0
+```
+These are some of the methods the chapter disscuessed in terms of using debugging methods and writing test cases. 
